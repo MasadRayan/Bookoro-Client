@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Map from '../Components/Map/Map';
-import Banner from '../Banner/Banner';
+import Banner from '../Components/Banner/Banner';
 
 
 const Home = () => {
@@ -12,7 +12,6 @@ const Home = () => {
     }, [])
     return (
         <div>
-            
             <Banner></Banner>
             <Map></Map>
         </div>
