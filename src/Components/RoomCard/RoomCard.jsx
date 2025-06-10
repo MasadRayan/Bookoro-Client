@@ -29,34 +29,34 @@ const RoomCard = ({ room }) => {
             <div className="card-body flex">
                 <div className="flex justify-between gap-3 items-start">
                     <h2 className="card-title text-2xl font-bold">{room.roomName}</h2>
-                    <p className="text-xl font-semibold text-primary">${room.price}<span className="text-sm text-gray-500">/night</span></p>
+                    <p className="text-xl font-semibold text-[#2ecc71]">${room.price}<span className="text-sm text-gray-500">/night</span></p>
                 </div>
 
                
                 <div className="flex flex-wrap gap-4 my-3">
                     <div className="flex items-center text-sm">
-                        <FaBed className="mr-1 text-primary" />
+                        <FaBed className="mr-1 text-[#2ecc71]" />
                         <span className="capitalize">{room.bed} bed</span>
                     </div>
                     <div className="flex items-center text-sm">
-                        <FaUserFriends className="mr-1 text-primary" />
+                        <FaUserFriends className="mr-1 text-[#2ecc71]" />
                         <span>{room.capacity} guests</span>
                     </div>
                     <div className="flex items-center text-sm">
                         {room.view === "sea" ? (
-                            <FaUmbrellaBeach className="mr-1 text-primary" />
+                            <FaUmbrellaBeach className="mr-1 text-[#2ecc71]" />
                         ) : (
-                            <FaMountain className="mr-1 text-primary" />
+                            <FaMountain className="mr-1 text-[#2ecc71]" />
                         )}
                         <span className="capitalize">{room.view} view</span>
                     </div>
                     <div className="flex items-center text-sm">
-                        <FaSnowflake className="mr-1 text-primary" />
+                        <FaSnowflake className="mr-1 text-[#2ecc71]" />
                         <span className="uppercase">{room.ac}</span>
                     </div>
                     {room.complementaryBreakfast === "included" && (
                         <div className="flex items-center text-sm">
-                            <FaUtensils className="mr-1 text-primary" />
+                            <FaUtensils className="mr-1 text-[#2ecc71]" />
                             <span>Breakfast</span>
                         </div>
                     )}
@@ -71,7 +71,7 @@ const RoomCard = ({ room }) => {
                     </div>
                     
                 </div>
-                <div >
+                <div className='mt-5'>
                     <Link to={`/room/${room._id}`} className='btn bg-[#2ecc71]'>See Details</Link>
                 </div>
             </div>
