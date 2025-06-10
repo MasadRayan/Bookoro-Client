@@ -13,7 +13,7 @@ const Map = () => {
     const position = [22.380237848381796, 91.8498747186482];
 
     return (
-        <div className="p-6  mx-auto mt-10">
+        <div className="p-6  mx-auto my-10">
             <h2 className="text-4xl md:text-4xl font-extrabold text-center mb-8">Find Us</h2>
             <div className='h-[400px] lg:h-[500px] w-100% rounded-2xl'>
                 <MapContainer center={position} zoom={13} scrollWheelZoom={true}

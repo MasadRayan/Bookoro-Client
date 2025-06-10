@@ -27,7 +27,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar mb-10 px-4">
+        <div className="navbar mb-8 px-4">
             <div className="flex-1 flex items-center gap-2">
                 <button className="lg:hidden text-2xl" onClick={toggleDrawer}>
                     {isDrawerOpen ? <FiX /> : <FiMenu />}
