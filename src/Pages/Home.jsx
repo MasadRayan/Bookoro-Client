@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Map from '../Components/Map/Map';
 
 const Home = () => {
 
@@ -9,7 +10,7 @@ const Home = () => {
     }, [])
     return (
         <div>
-
+            <Map></Map>
         </div>
     );
 };
