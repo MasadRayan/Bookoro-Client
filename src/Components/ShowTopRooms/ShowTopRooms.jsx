@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar,  FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaWifi, FaUtensils, FaSnowflake } from 'react-icons/fa';
+import { FaStar, FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaUtensils, FaSnowflake } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const ShowTopRooms = () => {
 
@@ -44,7 +45,7 @@ const ShowTopRooms = () => {
                         <div className="card-body">
                             <div className="flex justify-between items-start gap-3">
                                 <h2 className="card-title text-2xl font-bold">{room.roomName}</h2>
-                                <p className="text-xl font-semibold text-[#2ecc71]">${room.price}<span className="text-sm text-gray-500">/night</span></p>
+                                <p className="text-xl font-semibold text-[#2ecc71]">৳{room.price}<span className="text-sm text-gray-500">/night</span></p>
                             </div>
 
                             {/* Room Details */}
@@ -84,17 +85,18 @@ const ShowTopRooms = () => {
                                     <span className="mx-2">•</span>
                                     <span>Room #{room.roomNumber}</span>
                                 </div>
-                                
+
                             </div>
 
                             {/* Action Buttons */}
                             <div className="card-actions justify-end mt-4">
-                                <button
+                                <Link
+                                    to={`/room/${room._id}`}
                                     className="btn bg-[#2ecc71]"
                                     disabled={room.status === "booked"}
                                 >
                                     {room.status === "booked" ? "Not Available" : "Book Now"}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>)

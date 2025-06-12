@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaStar, FaSwimmingPool, FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaWifi, FaUtensils, FaSnowflake } from 'react-icons/fa';
-import { BiArea } from 'react-icons/bi';
+import { FaStar,  FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaUtensils, FaSnowflake } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const RoomCard = ({ room }) => {
@@ -29,7 +28,7 @@ const RoomCard = ({ room }) => {
             <div className="card-body flex">
                 <div className="flex justify-between gap-3 items-start">
                     <h2 className="card-title text-2xl font-bold">{room.roomName}</h2>
-                    <p className="text-xl font-semibold text-[#2ecc71]">${room.price}<span className="text-sm text-gray-500">/night</span></p>
+                    <p className="text-xl font-semibold text-[#2ecc71]">৳{room.price}<span className="text-sm text-gray-500">/night</span></p>
                 </div>
 
                
