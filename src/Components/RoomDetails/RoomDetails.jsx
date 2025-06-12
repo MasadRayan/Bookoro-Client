@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { use, useState } from "react";
 import { FaBed, FaStar, FaUserFriends, FaSnowflake, FaUtensils, FaWater, FaInfoCircle } from "react-icons/fa";
-import { Link, ScrollRestoration, useLoaderData, useNavigate } from "react-router";
+import { Link,  ScrollRestoration, useLoaderData, useLocation, useNavigate, } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -12,6 +12,9 @@ export default function RoomDetails() {
     const { user } = use(AuthContext)
     const loaderRoom = useLoaderData();
     const [room, setRoom] = useState(loaderRoom);
+    const navigate = useNavigate();
+    const location = useLocation();
+
 
 
     const handleBooking = (e) => {
@@ -44,6 +47,10 @@ export default function RoomDetails() {
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const handleUserLogin = () => {
+        navigate("/login", {state : location.pathname});
     }
 
 
@@ -125,13 +132,24 @@ export default function RoomDetails() {
                             ৳{room.price} / night
                         </p>
                         <div className="flex gap-5">
-                            <button
-                                onClick={() => document.getElementById('my_modal_1').showModal()}
-                                className="btn bg-[#2ecc71]"
-                                disabled={room.status === "booked"}
-                            >
-                                {room.status === "booked" ? "Not Available" : "Book Now"}
-                            </button>
+                            {
+                                user ?
+                                    <button
+                                        onClick={() => document.getElementById('my_modal_1').showModal()}
+                                        className="btn bg-[#2ecc71]"
+                                        disabled={room.status === "booked"}
+                                    >
+                                        {room.status === "booked" ? "Not Available" : "Book Now"}
+                                    </button>
+                                    :
+                                    <button
+                                        onClick={handleUserLogin}
+                                        className="btn bg-[#2ecc71]"
+                                        disabled={room.status === "booked"}
+                                    >
+                                        {room.status === "booked" ? "Not Available" : "Book Now"}
+                                    </button>
+                            }
                             <Link to={'/rooms'} className="btn bg-[#2ecc71]">All Rooms</Link>
                         </div>
                     </motion.div>
@@ -151,15 +169,13 @@ export default function RoomDetails() {
                         <form onSubmit={handleBooking} className="fieldset w-full text-2xl p-4">
 
                             <label className="label">Your Name</label>
-                            <input type="text" className="input" name="name" defaultValue={user.displayName} readOnly placeholder="Your name" />
+                            <input type="text" className="input" name="name" defaultValue={user?.displayName} readOnly placeholder="Your name" />
 
                             <label className="label">Your Email</label>
-                            <input type="email" name="email" defaultValue={user.email} readOnly className="input" placeholder="Email" />
+                            <input type="email" name="email" defaultValue={user?.email} readOnly className="input" placeholder="Email" />
 
                             <label className="label">Reservation Date</label>
                             <input type="date" name="date" className="input" placeholder="Date" />
-
-
 
                             <button className="btn mt-5 bg-[#2ecc71] w-fit">Book Now</button>
                         </form>
