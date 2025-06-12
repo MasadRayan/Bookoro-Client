@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { FaBed, FaStar, FaUserFriends, FaSnowflake, FaUtensils, FaWater, FaInfoCircle } from "react-icons/fa";
 import { Link,  ScrollRestoration, useLoaderData, useLocation, useNavigate, } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
@@ -14,6 +14,10 @@ export default function RoomDetails() {
     const [room, setRoom] = useState(loaderRoom);
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        document.title = 'Room Details'
+    }, [])
 
 
 
@@ -175,7 +179,7 @@ export default function RoomDetails() {
                             <input type="email" name="email" defaultValue={user?.email} readOnly className="input" placeholder="Email" />
 
                             <label className="label">Reservation Date</label>
-                            <input type="date" name="date" className="input" placeholder="Date" />
+                            <input type="date" name="date" className="input" placeholder="Date" required />
 
                             <button className="btn mt-5 bg-[#2ecc71] w-fit">Book Now</button>
                         </form>

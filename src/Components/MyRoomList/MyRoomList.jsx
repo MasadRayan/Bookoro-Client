@@ -1,13 +1,20 @@
-import { use } from 'react';
+import { use, useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import lottieHotel from '../../assets/lotties/Hotelbook.json'
-import { Link } from 'react-router';
+import { Link, ScrollRestoration } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const MyRoomList = ({ myRoomPromise, onRefresh }) => {
     const rooms = use(myRoomPromise);
+    const { user } = use(AuthContext);
+    
+
+    useEffect(() => {
+        document.title = 'My Bookings'
+    }, [])
 
     const handleroomDelete = (id) => {
         Swal.fire({
@@ -43,6 +50,35 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
         });
     };
 
+    const handleUpdateDate = (e, id) => {
+        e.preventDefault();
+        const date = e.target.date.value;
+        const UpdateInfo = {
+            date: date,
+        };
+        axios.patch(`http://localhost:3000/rooms/${id}`, UpdateInfo)
+            .then(res => {
+                if (res.data.modifiedCount) {
+
+
+                    const modal = document.getElementById("my_modal_1");
+                    if (modal) modal.close();
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Your Reservation Date has been Updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    
+                    onRefresh();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div>
             {
@@ -57,6 +93,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                         <th>Room Name</th>
                                         <th>Price</th>
                                         <th>Rating</th>
+                                        <th>Booked Date</th>
                                         <th>Manage</th>
                                         <th>Review</th>
                                     </tr>
@@ -82,15 +119,45 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                 <FaStar className="text-yellow-400 mr-1" />
                                                 <span>{room.rating}</span>
                                             </td>
+                                            <td>
+                                                {room.date}
+                                            </td>
                                             <td className='space-x-3 '>
                                                 <button
                                                     onClick={() => handleroomDelete(room._id)}
                                                     className="btn btn-sm bg-red-400">Cancel</button>
-                                                <button className="btn btn-sm btn-soft btn-success">Update Date</button>
+                                                <button
+                                                    onClick={() => document.getElementById('my_modal_1').showModal()}
+                                                    className="btn btn-sm btn-soft btn-success">Update Date</button>
                                             </td>
                                             <td>
                                                 <button className="btn btn-sm bg-[#2ecc71]">Review</button>
                                             </td>
+                                            <dialog id="my_modal_1" className="modal">
+                                                <div className="modal-box">
+                                                    <h2 className="text-3xl font-semibold" style={{ color: "#2ecc71" }}>
+                                                        {room.roomName}
+                                                    </h2>
+                                                    <p className="text-2xl font-bold mt-4">
+                                                        ৳{room.price} / night
+                                                    </p>
+                                                    <div className="modal-action">
+                                                        <form onSubmit={(e) =>handleUpdateDate(e, room._id)} className="fieldset w-full text-2xl p-4">
+
+                                                            <label className="label">Your Name</label>
+                                                            <input type="text" className="input" name="name" defaultValue={user?.displayName} readOnly placeholder="Your name" />
+
+                                                            <label className="label">Your Email</label>
+                                                            <input type="email" name="email" defaultValue={user?.email} readOnly className="input" placeholder="Email" />
+
+                                                            <label className="label">Updated Reservation Date</label>
+                                                            <input type="date" name="date" className="input" placeholder="Date" required />
+
+                                                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Book Now</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </dialog>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -108,6 +175,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                         </div>
                     </div>
             }
+            <ScrollRestoration></ScrollRestoration>
         </div>
     );
 };
