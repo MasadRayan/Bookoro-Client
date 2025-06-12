@@ -3,9 +3,9 @@ import { FaStar,  FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaUtensils,
 import { Link } from 'react-router';
 
 const RoomCard = ({ room }) => {
-    console.log(room);
+    // console.log(room);
     return (
-        <Link to={`/room/${room._id}`} className="card  bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 ">
+        <Link to={`/room/${room._id}`} className="card px-2 md:px-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 ">
             
             {room.status === "booked" && (
                 <div className="badge badge-secondary absolute top-4 right-4 z-10">Booked</div>
@@ -71,7 +71,7 @@ const RoomCard = ({ room }) => {
                     
                 </div>
                 <div className='mt-5'>
-                    <Link to={`/room/${room._id}`} className='btn bg-[#2ecc71]'>See Details</Link>
+                    <div  className='btn bg-[#2ecc71]'>See Details</div>
                 </div>
             </div>
         </Link>

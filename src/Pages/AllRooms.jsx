@@ -7,7 +7,7 @@ const AllRooms = () => {
         document.title = 'All Rooms'
     }, [])
     const rooms = useLoaderData()
-    console.log(rooms);
+    // console.log(rooms);
     return (
         <div>
             <h2 className='text-3xl md:text-5xl my-10 font-bold text-center'>All of our Rooms</h2>
