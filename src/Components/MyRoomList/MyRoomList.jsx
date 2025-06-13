@@ -10,7 +10,9 @@ import { AuthContext } from '../../Context/AuthContext';
 const MyRoomList = ({ myRoomPromise, onRefresh }) => {
     const rooms = use(myRoomPromise);
     const { user } = use(AuthContext);
-    
+    const date = new Date();
+    const formattedDate = date.toISOString().split('T')[0];
+
 
     useEffect(() => {
         document.title = 'My Bookings'
@@ -70,13 +72,55 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    
+
                     onRefresh();
                 }
             })
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const handlePostReview = (e, id, photo) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const name = e.target.name.value;
+        const rating = e.target.rating.value;
+        const userPhoto = photo;
+        const review = e.target.review.value;
+        const roomId = id;
+        const date = formattedDate;
+        const newReview = {
+            email,
+            name,
+            rating,
+            userPhoto,
+            review,
+            roomId,
+            date
+        }
+
+        axios.post(`http://localhost:3000/reviews`, newReview)
+            .then(res => {
+                if (res.data.insertedId) {
+
+                    const modal = document.getElementById("my_modal_2");
+                    if (modal) modal.close();
+
+                    
+                    Swal.fire({
+                        icon: "success",
+                        title: "Your Reviwe has been Added",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
     }
 
     return (
@@ -131,7 +175,9 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                     className="btn btn-sm btn-soft btn-success">Update Date</button>
                                             </td>
                                             <td>
-                                                <button className="btn btn-sm bg-[#2ecc71]">Review</button>
+                                                <button
+                                                    onClick={() => document.getElementById('my_modal_2').showModal()}
+                                                    className="btn btn-sm bg-[#2ecc71]">Review</button>
                                             </td>
                                             <dialog id="my_modal_1" className="modal">
                                                 <div className="modal-box">
@@ -142,7 +188,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                         ৳{room.price} / night
                                                     </p>
                                                     <div className="modal-action">
-                                                        <form onSubmit={(e) =>handleUpdateDate(e, room._id)} className="fieldset w-full text-2xl p-4">
+                                                        <form onSubmit={(e) => handleUpdateDate(e, room._id)} className="fieldset w-full text-2xl p-4">
 
                                                             <label className="label">Your Name</label>
                                                             <input type="text" className="input" name="name" defaultValue={user?.displayName} readOnly placeholder="Your name" />
@@ -153,7 +199,33 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                             <label className="label">Updated Reservation Date</label>
                                                             <input type="date" name="date" className="input" placeholder="Date" required />
 
-                                                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Book Now</button>
+                                                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Update Now</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </dialog>
+                                            <dialog id="my_modal_2" className="modal">
+                                                <div className="modal-box">
+                                                    <h2 className='text-3xl font-bold text-center mb-3'>Review Box</h2>
+                                                    <h2 className="text-2xl font-semibold" style={{ color: "#2ecc71" }}>
+                                                        {room.roomName}
+                                                    </h2>
+                                                    <div className="modal-action">
+                                                        <form onSubmit={(e) => handlePostReview(e, room._id, user.photoURL)} className="fieldset w-full text-2xl p-4">
+
+                                                            <label className="label">Your Name</label>
+                                                            <input type="text" className="input" name="name" defaultValue={user?.displayName} readOnly placeholder="Your name" />
+
+                                                            <label className="label">Your Email</label>
+                                                            <input type="email" name="email" defaultValue={user?.email} readOnly className="input" placeholder="Email" />
+
+                                                            <label className="label">Rating</label>
+                                                            <input type="number" name="rating" min={'1'} max={'5'} className="input" placeholder="Rating" />
+
+                                                            <label className="label">Review</label>
+                                                            <textarea class="textarea" name='review' placeholder="Review"></textarea>
+
+                                                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Submit</button>
                                                         </form>
                                                     </div>
                                                 </div>

@@ -181,7 +181,7 @@ export default function RoomDetails() {
                             <label className="label">Reservation Date</label>
                             <input type="date" name="date" className="input" placeholder="Date" required />
 
-                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Book Now</button>
+                            <button className="btn mt-5 bg-[#2ecc71] w-fit">Confirm</button>
                         </form>
                     </div>
                 </div>
