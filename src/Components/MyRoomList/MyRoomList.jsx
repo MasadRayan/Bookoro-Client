@@ -232,7 +232,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                             <input type="number" name="rating" min={'1'} max={'5'} className="input" placeholder="Rating" />
 
                                                             <label className="label">Review</label>
-                                                            <textarea class="textarea" name='review' placeholder="Review"></textarea>
+                                                            <textarea className="textarea" name='review' placeholder="Review"></textarea>
 
                                                             <button className="btn mt-5 bg-[#2ecc71] w-fit">Submit</button>
                                                         </form>
