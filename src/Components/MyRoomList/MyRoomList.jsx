@@ -11,8 +11,15 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
     const rooms = use(myRoomPromise);
     const { user } = use(AuthContext);
     const date = new Date();
-    const formattedDate = date.toISOString().split('T')[0];
-
+    const formattedDate = date.toLocaleString('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+    }).replace(',', '');
 
     useEffect(() => {
         document.title = 'My Bookings'
@@ -81,7 +88,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
             })
     }
 
-    const handlePostReview = (e, id, photo) => {
+    const handlePostReview = (e, id, photo, roomtitle) => {
         e.preventDefault();
         const email = e.target.email.value;
         const name = e.target.name.value;
@@ -90,6 +97,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
         const review = e.target.review.value;
         const roomId = id;
         const date = formattedDate;
+        const roomTitle = roomtitle
         const newReview = {
             email,
             name,
@@ -97,7 +105,8 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
             userPhoto,
             review,
             roomId,
-            date
+            date,
+            roomTitle
         }
 
         axios.post(`http://localhost:3000/reviews`, newReview)
@@ -107,7 +116,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                     const modal = document.getElementById("my_modal_2");
                     if (modal) modal.close();
 
-                    
+
                     Swal.fire({
                         icon: "success",
                         title: "Your Reviwe has been Added",
@@ -211,7 +220,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                                         {room.roomName}
                                                     </h2>
                                                     <div className="modal-action">
-                                                        <form onSubmit={(e) => handlePostReview(e, room._id, user.photoURL)} className="fieldset w-full text-2xl p-4">
+                                                        <form onSubmit={(e) => handlePostReview(e, room._id, user.photoURL, room.roomName)} className="fieldset w-full text-2xl p-4">
 
                                                             <label className="label">Your Name</label>
                                                             <input type="text" className="input" name="name" defaultValue={user?.displayName} readOnly placeholder="Your name" />
