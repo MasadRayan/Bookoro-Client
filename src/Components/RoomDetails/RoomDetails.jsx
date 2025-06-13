@@ -6,6 +6,8 @@ import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ReviewCard from "../ReviewCard/ReviewCard";
+import Lottie from "lottie-react";
+import reviewlottie from '../../assets/lotties/review.json'
 
 
 
@@ -209,12 +211,29 @@ export default function RoomDetails() {
 
             <div>
                 <h3 className="text-3xl font-bold text-center my-10">Reviwes Of This Room</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
+                <div className="my-10">
                     {
-                        selectedReview.map(review => <ReviewCard 
-                            review={review}
-                            key={review._id}
-                            ></ReviewCard>)
+                        selectedReview.length === 0 ? (
+                            <div>
+                                <p className="text-center text-lg text-gray-500">No reviews yet for this room.</p>
+                                <div className="w-[300px] sm:w-[400px] md:w-[500px] h-auto mx-auto my-5">
+                                    <Lottie animationData={reviewlottie} loop={true} />
+                                </div>
+                                
+                            </div>
+
+                        ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {
+                                    selectedReview.map(review => (
+                                        <ReviewCard
+                                            review={review}
+                                            key={review._id}
+                                        />
+                                    ))
+                                }
+                            </div>
+                        )
                     }
                 </div>
             </div>

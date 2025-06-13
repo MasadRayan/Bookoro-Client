@@ -8,6 +8,8 @@ import Loading from "../Components/Loading/Loading";
 import RoomDetails from "../Components/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyRooms from "../Pages/MyRooms";
+import AboutUs from "../Pages/AboutUs";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -27,14 +29,14 @@ export const router = createBrowserRouter([
                 Component: Register
             },
             {
-                path : '/rooms', 
+                path: '/rooms',
                 Component: AllRooms,
                 loader: () => fetch('http://localhost:3000/rooms'),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/room/:id',
-                loader: ({params}) => fetch(`http://localhost:3000/rooms/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:3000/rooms/${params.id}`),
                 Component: RoomDetails,
                 hydrateFallbackElement: <Loading></Loading>
             },
@@ -43,7 +45,15 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyRooms></MyRooms>
                 </PrivateRoute>
+            },
+            {
+                path: '/aboutUs',
+                Component: AboutUs
+            },
+            {
+                path: '*',
+                Component: ErrorPage
             }
-        ] 
-    }
+        ]
+    },
 ])

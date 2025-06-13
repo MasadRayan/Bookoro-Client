@@ -1,4 +1,3 @@
-'use client';
 import React, { Suspense, use, useState, useCallback } from 'react';
 import MyRoomList from '../Components/MyRoomList/MyRoomList';
 import Loading from '../Components/Loading/Loading';
