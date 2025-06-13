@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-2Sh45ggquUjg_japkpmaxmaGSaQTU-4",
-  authDomain: "bookoro-app.firebaseapp.com",
-  projectId: "bookoro-app",
-  storageBucket: "bookoro-app.firebasestorage.app",
-  messagingSenderId: "1019036230037",
-  appId: "1:1019036230037:web:020aa10eccfb1ffb3d569c"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
