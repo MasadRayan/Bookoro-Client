@@ -4,6 +4,9 @@ import Banner from '../Components/Banner/Banner';
 import ShowTopRooms from '../Components/ShowTopRooms/ShowTopRooms';
 import SortedReview from '../Components/SortedReview/SortedReview';
 import WhyBookoro from '../Components/WhyBookoro/WhyBookoro';
+import { ScrollRestoration } from 'react-router';
+import HowItWorks from '../Components/HowItWorks/HowItWorks';
+
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
@@ -25,6 +28,7 @@ const Home = () => {
             <ShowTopRooms />
             <SortedReview />
             <WhyBookoro></WhyBookoro>
+            <HowItWorks></HowItWorks>
             <Map />
 
             {showModal && (
@@ -61,6 +65,7 @@ const Home = () => {
                     </div>
                 </dialog>
             )}
+            <ScrollRestoration></ScrollRestoration>
         </div>
     );
 };
