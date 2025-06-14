@@ -6,8 +6,9 @@ import { AuthContext } from '../Context/AuthContext';
 
 const MyRooms = () => {
     const { user } = use(AuthContext);
+    // console.log(user.accessToken);
 
-    const createPromise = useCallback(() => myRoomPromise(user.email), [user.email]);
+    const createPromise = useCallback(() => myRoomPromise(user.email, user.accessToken), [user.email]);
 
     const [promise, setPromise] = useState(createPromise);
 

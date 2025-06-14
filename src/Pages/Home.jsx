@@ -5,13 +5,14 @@ import ShowTopRooms from '../Components/ShowTopRooms/ShowTopRooms';
 import SortedReview from '../Components/SortedReview/SortedReview';
 
 
+
 const Home = () => {
 
     useEffect(() => {
 
         document.title = "Home";
         
-    }, [])
+    }, []);
     return (
         <div>
             <Banner></Banner>

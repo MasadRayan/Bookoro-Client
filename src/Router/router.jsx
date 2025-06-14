@@ -31,12 +31,11 @@ export const router = createBrowserRouter([
             {
                 path: '/rooms',
                 Component: AllRooms,
-                loader: () => fetch('http://localhost:3000/rooms'),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/room/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/rooms/${params.id}`),
+                loader: ({ params }) => fetch(`https://bookoro-server-side.vercel.app/rooms/${params.id}`),
                 Component: RoomDetails,
                 hydrateFallbackElement: <Loading></Loading>
             },

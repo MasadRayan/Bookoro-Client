@@ -28,7 +28,7 @@ export default function RoomDetails() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const res = await fetch('http://localhost:3000/reviews');
+                const res = await fetch('https://bookoro-server-side.vercel.app/reviews');
                 const data = await res.json();
                 setReviews(data);
             } catch (err) {
@@ -53,7 +53,7 @@ export default function RoomDetails() {
             status: "booked"
         };
 
-        axios.patch(`http://localhost:3000/rooms/${room._id}`, newAddedInfo)
+        axios.patch(`https://bookoro-server-side.vercel.app/rooms/${room._id}`, newAddedInfo)
             .then(res => {
                 if (res.data.modifiedCount) {
 

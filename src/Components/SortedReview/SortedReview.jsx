@@ -19,7 +19,7 @@ export default function SortedReview() {
 
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/reviews/sortedByTime')
+        fetch('https://bookoro-server-side.vercel.app/reviews/sortedByTime')
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -57,7 +57,7 @@ export default function SortedReview() {
                                 />
                                 <h3 className="text-xl font-bold text-green-600">{reviwe.name}</h3>
                                 <p className="text-sm text-gray-500 mb-2">{format(new Date(reviwe.date), 'PPP')}</p>
-                                <div className="italic text-gray-700 mb-4 max-h-30 overflow-y-auto pr-2 scroll-thin">
+                                <div className="italic text-gray-700 mb-4 max-h-20 overflow-y-auto pr-2 scroll-thin">
                                     “{reviwe.review}”
                                 </div>
                                 <div className="flex justify-center gap-1">{renderStars(reviwe.rating)}</div>

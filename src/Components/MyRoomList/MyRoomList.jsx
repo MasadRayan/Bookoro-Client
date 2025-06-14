@@ -25,7 +25,22 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
         document.title = 'My Bookings'
     }, [])
 
-    const handleroomDelete = (id) => {
+    const handleroomDelete = (id, bookingDate) => {
+        const today = new Date();
+        const booking = new Date(bookingDate);
+
+        const timeDiff = booking.getTime() - today.getTime();
+        const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+        if (dayDiff <= 1) {
+            Swal.fire({
+                icon: "error",
+                title: "Too Late!",
+                text: "You can only cancel bookings more than 1 day in advance.",
+            });
+            return;
+        }
+
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -41,7 +56,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                     date: "",
                     status: "unbooked"
                 };
-                axios.patch(`http://localhost:3000/rooms/${id}`, deleteInfo)
+                axios.patch(`https://bookoro-server-side.vercel.app/rooms/${id}`, deleteInfo)
                     .then(res => {
                         if (res.data.modifiedCount) {
                             Swal.fire({
@@ -59,13 +74,14 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
         });
     };
 
+
     const handleUpdateDate = (e, id) => {
         e.preventDefault();
         const date = e.target.date.value;
         const UpdateInfo = {
             date: date,
         };
-        axios.patch(`http://localhost:3000/rooms/${id}`, UpdateInfo)
+        axios.patch(`https://bookoro-server-side.vercel.app/rooms/${id}`, UpdateInfo)
             .then(res => {
                 if (res.data.modifiedCount) {
 
@@ -109,7 +125,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
             roomTitle
         }
 
-        axios.post(`http://localhost:3000/reviews`, newReview)
+        axios.post(`https://bookoro-server-side.vercel.app/reviews`, newReview)
             .then(res => {
                 if (res.data.insertedId) {
 
@@ -177,7 +193,7 @@ const MyRoomList = ({ myRoomPromise, onRefresh }) => {
                                             </td>
                                             <td className='space-x-3 '>
                                                 <button
-                                                    onClick={() => handleroomDelete(room._id)}
+                                                    onClick={() => handleroomDelete(room._id, room.date)}
                                                     className="btn btn-sm bg-red-400">Cancel</button>
                                                 <button
                                                     onClick={() => document.getElementById('my_modal_1').showModal()}

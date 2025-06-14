@@ -88,7 +88,7 @@ const Banner = () => {
                                     More than a place to stay!
                                 </p>
                                 <Link to="/rooms" className="btn mt-5 bg-[#2ecc71] border-0 text-lg">
-                                    Best price Guarantee!
+                                    Our Rooms
                                 </Link>
                             </div>
                         </div>

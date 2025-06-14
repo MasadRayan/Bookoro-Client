@@ -1,4 +1,8 @@
-export const myRoomPromise = (email) => {
-    return fetch(`http://localhost:3000/userrooms?email=${email}`)
+export const myRoomPromise = (email, accessToken) => {
+    return fetch(`https://bookoro-server-side.vercel.app/userrooms?email=${email}`, {
+        headers: {
+            authorization : `Bearer ${accessToken}`
+        }
+    })
     .then(res => res.json())
 }

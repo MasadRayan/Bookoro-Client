@@ -7,7 +7,7 @@ const ShowTopRooms = () => {
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/rooms/sorted-by-rating')
+        fetch('https://bookoro-server-side.vercel.app/rooms/sorted-by-rating')
             .then(res => res.json())
             .then(data => [
                 setRooms(data)
