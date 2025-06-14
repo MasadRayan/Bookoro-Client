@@ -35,9 +35,9 @@ export default function SortedReview() {
     }, [])
 
     return (
-        <div className='my-10'>
+        <div className='pb-10'>
             <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-center my-10">Customer Reviews</h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-center mb-10">Customer Reviews</h3>
             </div>
             <div className=" mx-auto px-4 ">
                 <Swiper

@@ -24,7 +24,7 @@ const ShowTopRooms = () => {
     const sortedRooms = rooms.slice(0, 6);
 
     return (
-        <div className='my-10'>
+        <div className='py-20'>
             <h2 className='text-4xl font-bold text-center my-5'>Top Rated Rooms</h2>
             {
                 loading ?
