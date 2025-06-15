@@ -46,7 +46,7 @@ const FAQ = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.15 }}
                   whileHover={{ scale: 1.02 }}
-                  className="bg-white rounded-2xl shadow-md cursor-pointer"
+                  className="rounded-2xl shadow-md cursor-pointer"
                   onClick={() => toggleIndex(index)}
                 >
                   <div className="flex justify-between items-center p-5">
@@ -61,7 +61,7 @@ const FAQ = () => {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="px-5 pb-6 text-gray-700"
+                      className="px-5 pb-6 "
                     >
                       {faq.answer}
                     </motion.div>

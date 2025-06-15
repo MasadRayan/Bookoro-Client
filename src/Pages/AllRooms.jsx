@@ -33,7 +33,7 @@ const AllRooms = () => {
             <div className='flex justify-between items-center '>
                 <div></div>
                 <h2 className='text-3xl md:text-5xl my-10 font-bold text-center'>All of our Rooms</h2>
-                <button onClick={() => setShowFilter(!showFilter)} className="btn btn-outline btn-primary flex items-center gap-2">
+                <button onClick={() => setShowFilter(!showFilter)} className="btn btn-outline btn-success mr-2 md:mr-0 flex items-center gap-2">
                     <FiFilter className="text-lg" />
                     Filter By
                 </button>

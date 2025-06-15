@@ -17,7 +17,6 @@ const Navbar = () => {
             {
                 user && <NavLink className="hover:bg-[#2ecc71] hover:rounded-lg px-3 py-2 block" to="/myBookings">My Bookings</NavLink>
             }
-            <NavLink className="hover:bg-[#2ecc71] hover:rounded-lg px-3 py-2 block" to="/aboutUs">About Us</NavLink>
 
         </>
     );

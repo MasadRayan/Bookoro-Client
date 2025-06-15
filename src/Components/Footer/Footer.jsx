@@ -14,7 +14,6 @@ const Footer = () => {
             {
                 user && <Link className="hover:text-[#2ecc71] cursor-pointer  block" to="/myBookings">My Bookings</Link>
             }
-            <Link className="hover:text-[#2ecc71] cursor-pointer  block" to="/aboutUs">About Us</Link>
         </>
     return (
         <footer className=" mt-20 bg-base-200 rounded-t-3xl overflow-hidden">
@@ -52,7 +51,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h3 className="font-semibold text-white mb-4">Site Map</h3>
+                    <h3 className="font-semibold  mb-4">Site Map</h3>
                     <ul className="space-y-2 text-sm">
                         {links}
                     </ul>
@@ -60,7 +59,7 @@ const Footer = () => {
 
                 {/* Right Section - Legal */}
                 <div>
-                    <h3 className="font-semibold text-white mb-4">Legal</h3>
+                    <h3 className="font-semibold mb-4">Legal</h3>
                     <ul className="space-y-2 text-sm">
                         <li className="hover:text-[#2ecc71] cursor-pointer">Privacy Policy</li>
                         <li className="hover:text-[#2ecc71] cursor-pointer">Terms of Services</li>

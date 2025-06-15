@@ -8,7 +8,6 @@ import Loading from "../Components/Loading/Loading";
 import RoomDetails from "../Components/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyRooms from "../Pages/MyRooms";
-import AboutUs from "../Pages/AboutUs";
 import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -44,10 +43,6 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyRooms></MyRooms>
                 </PrivateRoute>
-            },
-            {
-                path: '/aboutUs',
-                Component: AboutUs
             },
             {
                 path: '*',

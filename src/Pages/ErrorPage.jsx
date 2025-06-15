@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import errorLottie from '../assets/lotties/errorpage.json'
 import { Link } from 'react-router';
 import Lottie from 'lottie-react';
 
 const ErrorPage = () => {
+    useEffect(() => {
+        document.title = 'Error Page'
+    }, [])
     return (
         <div className='my-10'>
             <h3 className="text-3xl font-bold text-center my-5">Page Not Found</h3>

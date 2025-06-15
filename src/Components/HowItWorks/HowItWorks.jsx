@@ -26,7 +26,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto text-center">
         <Fade cascade damping={0.2} triggerOnce>
           <h2 className="text-4xl font-extrabold mb-4">How It Works</h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg  mb-12 max-w-2xl mx-auto">
             Booking with Bookoro is easy and fast — follow these simple steps to get started.
           </p>
         </Fade>
@@ -37,11 +37,11 @@ const HowItWorks = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white p-8 rounded-3xl shadow-lg min-h-60 cursor-pointer hover:shadow-xl flex flex-col items-center text-center"
+                className=" p-8 rounded-3xl shadow-lg min-h-60 cursor-pointer hover:shadow-xl flex flex-col items-center text-center"
               >
                 <div className="mb-6">{step.icon}</div>
                 <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-700">{step.description}</p>
+                <p className="">{step.description}</p>
               </motion.div>
             </Fade>
           ))}
