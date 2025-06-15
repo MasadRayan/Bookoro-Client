@@ -40,7 +40,7 @@ const Home = () => {
                             className="hero min-h-100"
                             style={{
                                 backgroundImage:
-                                    "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp')",
+                                    "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://oasis-prasonisi.com/wp-content/uploads/2023/11/Oasis-hotel-prasonisi-slide-1.jpeg')",
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
                                 borderRadius: '10px'
