@@ -6,6 +6,7 @@ import SortedReview from '../Components/SortedReview/SortedReview';
 import WhyBookoro from '../Components/WhyBookoro/WhyBookoro';
 import { ScrollRestoration } from 'react-router';
 import HowItWorks from '../Components/HowItWorks/HowItWorks';
+import FAQ from '../Components/FAQ/FAQ';
 
 
 const Home = () => {
@@ -29,6 +30,7 @@ const Home = () => {
             <SortedReview />
             <WhyBookoro></WhyBookoro>
             <HowItWorks></HowItWorks>
+            <FAQ></FAQ>
             <Map />
 
             {showModal && (
