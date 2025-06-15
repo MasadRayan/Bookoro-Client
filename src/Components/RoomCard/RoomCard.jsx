@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar,  FaMountain, FaUmbrellaBeach, FaBed, FaUserFriends, FaUtensils, FaSnowflake } from 'react-icons/fa';
 import { Link } from 'react-router';
 
-const RoomCard = ({ room }) => {
+const RoomCard = ({ room, reviewCount }) => {
     // console.log(room);
     return (
         <Link to={`/room/${room._id}`} className="card px-2 md:px-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 ">
@@ -67,6 +67,8 @@ const RoomCard = ({ room }) => {
                         <span>Floor {room.floor}</span>
                         <span className="mx-2">•</span>
                         <span>Room #{room.roomNumber}</span>
+                        <span className="mx-2">•</span>
+                        <span>Total Reviews: {reviewCount}</span>
                     </div>
                     
                 </div>

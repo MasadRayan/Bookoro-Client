@@ -10,6 +10,10 @@ const AllRooms = () => {
     const [maxPrice, setMaxPrice] = useState('');
     const [loading, setLoading] = useState(true);
     const [showFilter, setShowFilter] = useState(false);
+
+    // Store reviews count per room: { roomId: reviewCount }
+    const [reviewCounts, setReviewCounts] = useState({});
+
     useEffect(() => {
         document.title = 'All Rooms';
     }, []);
@@ -18,8 +22,25 @@ const AllRooms = () => {
         setLoading(true);
         fetch(`https://bookoro-server-side.vercel.app/rooms?minPrice=${minPrice}&maxPrice=${maxPrice}`)
             .then(res => res.json())
-            .then(data => {
+            .then(async (data) => {
                 setRooms(data);
+
+                
+                const counts = {};
+                await Promise.all(
+                    data.map(async (room) => {
+                        try {
+                            const res = await fetch(`https://bookoro-server-side.vercel.app/reviews/${room._id}`);
+                            const reviews = await res.json();
+                            counts[room._id] = reviews.length;
+                        } catch (err) {
+                            console.error(`Failed to fetch reviews for room ${room._id}`, err);
+                            counts[room._id] = 0; 
+                        }
+                    })
+                );
+                setReviewCounts(counts);
+
                 setLoading(false);
             })
             .catch(err => {
@@ -78,11 +99,15 @@ const AllRooms = () => {
             }
 
             {loading ? (
-                <Loading></Loading>
+                <Loading />
             ) : (
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10'>
                     {rooms.map(room => (
-                        <RoomCard key={room._id} room={room} />
+                        <RoomCard 
+                            key={room._id} 
+                            room={room} 
+                            reviewCount={reviewCounts[room._id] || 0} 
+                        />
                     ))}
                 </div>
             )}
