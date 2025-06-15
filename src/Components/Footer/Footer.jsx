@@ -70,7 +70,7 @@ const Footer = () => {
 
             {/* Bottom Copyright */}
             <div className="bg-[#2ecc71] rounded-t-xl text-center text-sm py-3 text-black">
-                © 2024 ataraxis.ai, All Rights Reserved.
+                © 2025 Bookoro, All Rights Reserved.
             </div>
         </footer>
     );
