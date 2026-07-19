@@ -1,82 +1,270 @@
-# 🌟 Bookoro
- --> CLIENT SIDE LIVE LOCATION: 🔗 https://bookoro-app.web.app
+# 🌟 Bookoro - Hotel Booking Platform
 
---> Bookoro is a modern hotel booking platform that enables users to discover, review, and book hotel rooms seamlessly with interactive design and secure authentication.
+🔗 **CLIENT SIDE LIVE LINK:** https://bookoro-app.web.app
 
-# 🔐 Authentication Features
+---
 
-1. New users can register with name, email, photoURL, and secure password.
-2. Existing users can login using email/password or Google social login.
-3. Protected routes: Only logged-in users can access My Bookings and booking/review features.
-4. Password validation with uppercase, lowercase, and minimum 6 characters enforced.
-5. Success and error notifications using React Toastify.
-6. User profile photo displayed in navbar after login.
+## 📖 Project Overview
 
-# 🏠 Home Page Features
+**Bookoro** is a modern and user-friendly hotel booking platform that allows users to explore available rooms, view detailed information, make bookings, manage reservations, and share reviews.  
 
-1. Responsive navbar with navigation links to Rooms, My Bookings(only logged in user), Login/Register.
-2. Dynamic banner slider with title, description, and button linking to Rooms page.
-3. Interactive map showing hotel location using React Leaflet.
-4. Featured rooms section showing top 6 rooms with "Review" buttons linking to details.
-5. User reviews carousel displaying latest reviews sorted by timestamp.
-6. Popup modal showing special offers and promotions on homepage load.
-7. Two additional attractive and relevant sections to engage users.
-8. Custom 404 page with friendly image and navigation back to home.
+The platform provides a smooth booking experience with secure authentication, responsive design, interactive UI elements, and real-time data management. It is built with modern web technologies to ensure performance, usability, and scalability.
 
-# 📱 Responsive Layout
+---
 
-* Fully responsive design optimized for mobile, tablet, and desktop.
-* Built with Tailwind CSS and Daisy UI for smooth adaptive UI.
+## 🚀 Main Technologies Used
 
-# 🔄 Routing Structure
+### Frontend:
+- ⚛️ React.js
+- 🎨 Tailwind CSS
+- 🌼 Daisy UI
+- 🔥 Firebase Authentication
+- 🛣️ React Router
+- 🌐 Axios
+- 🎞️ Framer Motion
+- 🗺️ React Leaflet
+- 📦 Swiper Slider
 
-* / → Home (banner + featured rooms + map + reviews + extra sections)
-* /rooms → Rooms listing with server-side price filter
-* /rooms/:id → Room details + booking + reviews
-* /login & /register → Authentication pages
-* /my-bookings → User’s booked rooms (protected route)
-*  * → 404 Not Found Page
+### Backend:
+- 🟢 Node.js
+- 🚂 Express.js
+- 🍃 MongoDB
+- 🔐 JWT Authentication
 
-# 🛌 Room & Booking Features
+### Deployment:
+- 🌍 Firebase Hosting (Client)
+- ☁️ Vercel (Server)
 
-1. Display all rooms from MongoDB with images and details.
-2. Booking modal with date picker for selecting booking date.
-3. Booking allowed only if the room is available.
-4. My Bookings page to update or cancel bookings with confirmation modals.
-5. Booking cancellation allowed only up to 1 day before booking date.
-6. Review modal for users to post rating, comment, and see their username read-only.
+---
 
+# ✨ Main Features
 
-# 🌈 UI/UX & Animations
+## 🔐 Authentication System
+- User registration with:
+  - Name
+  - Email
+  - Photo URL
+  - Password
+- User login using Email/Password.
+- Google authentication support.
+- Protected routes for authenticated users.
+- Password validation:
+  - Minimum 6 characters
+  - At least one uppercase letter
+  - At least one lowercase letter
+- User profile displayed in the navbar after login.
+- Success and error messages using React Toastify.
 
-* Smooth animations with Framer Motion and React Awesome Reveal.
-* Toast notifications for actions using React Toastify and SweetAlert2.
-* Interactive sliders/carousels implemented with Swiper.
-* Scroll animations with AOS.
-* Engaging Lottie animations integrated.
+---
 
-# 🔧 Tools & Packages Used
+## 🏠 Homepage Features
+- Responsive navigation bar.
+- Dynamic hero/banner slider.
+- Featured rooms section.
+- Interactive hotel location map using React Leaflet.
+- Latest user reviews section.
+- Special offers and promotions popup.
+- Additional attractive sections for better user engagement.
+- Responsive footer.
+- Custom 404 error page.
 
-1. React (v19.1.0)
-2. Tailwind CSS & @tailwindcss/vite (v4.1.8)
-3. Firebase (v11.9.0) Authentication
-4. MongoDB (secured via env variables)
-5. Axios (v1.9.0) for API calls
-6. React Router (v7.6.2)
-7. React Leaflet & Leaflet (v5.0.0 / v1.9.4) for maps
-8. Framer Motion (v12.17.0)
-9. React Awesome Reveal (v4.3.1)
-10. React Icons (v5.5.0)
-11. React Toastify (v11.0.5)
-22. SweetAlert2 (v11.6.13)
-13. Swiper (v11.2.8)
-14. Date-fns (v4.1.0) for date manipulation
-15. AOS (v2.3.4)
-16. Lottie React (v2.4.1)
+---
 
-# 🖥️ Backend & Server Info
+## 🛏️ Room Management Features
+- View all available hotel rooms.
+- Server-side room filtering by price range.
+- Detailed room information page.
+- Room availability checking system.
+- Users can view room reviews and ratings.
+- Booking system with date selection.
 
-1. Backend built with Node.js, Express, and MongoDB.
-2. JWT authentication for securing private routes.
-3. Server-side filtering of rooms by price.
-4. Environment variables used for Firebase config and MongoDB URI.
+---
+
+## 📅 Booking Features
+- Booking confirmation modal with room summary.
+- Users can select booking dates.
+- Prevents booking unavailable rooms.
+- My Bookings page for logged-in users.
+- Update booking date functionality.
+- Cancel booking with confirmation modal.
+- Booking cancellation validation based on booking date.
+- Room becomes available again after cancellation.
+
+---
+
+## ⭐ Review System
+- Users can submit reviews only for booked rooms.
+- Review includes:
+  - Username
+  - Rating (1-5)
+  - Comment
+  - Timestamp
+- Latest reviews displayed first.
+- Reviews shown on room details page.
+
+---
+
+# 📂 Project Structure
+
+```
+Bookoro/
+│
+├── public/
+│   └── images, icons, static files
+│
+├── src/
+│   │
+│   ├── assets/
+│   │   └── Images and media files
+│   │
+│   ├── Components/
+│   │   ├── Navbar
+│   │   ├── Footer
+│   │   ├── Banner
+│   │   ├── RoomCard
+│   │   └── Shared Components
+│   │
+│   ├── Pages/
+│   │   ├── Home
+│   │   ├── Rooms
+│   │   ├── RoomDetails
+│   │   ├── Login
+│   │   ├── Register
+│   │   └── MyBookings
+│   │
+│   ├── Routes/
+│   │   ├── Router Setup
+│   │   └── Private Routes
+│   │
+│   ├── Context/
+│   │   └── Authentication Context
+│   │
+│   ├── Hooks/
+│   │   └── Custom Hooks
+│   │
+│   ├── Utils/
+│   │   └── Helper Functions
+│   │
+│   ├── Firebase/
+│   │   └── Firebase Configuration
+│   │
+│   └── main.jsx
+│
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+# 📦 Dependencies Used
+
+```json
+{
+  "@tailwindcss/vite": "^4.1.8",
+  "aos": "^2.3.4",
+  "axios": "^1.9.0",
+  "date-fns": "^4.1.0",
+  "firebase": "^11.9.0",
+  "framer-motion": "^12.17.0",
+  "leaflet": "^1.9.4",
+  "lottie-react": "^2.4.1",
+  "react": "^19.1.0",
+  "react-awesome-reveal": "^4.3.1",
+  "react-dom": "^19.1.0",
+  "react-icons": "^5.5.0",
+  "react-leaflet": "^5.0.0",
+  "react-router": "^7.6.2",
+  "react-toastify": "^11.0.5",
+  "sweetalert2": "^11.6.13",
+  "swiper": "^11.2.8",
+  "tailwindcss": "^4.1.8"
+}
+```
+
+---
+
+# ⚙️ How to Run Locally
+
+Follow these steps to run the project on your local machine:
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/bookoro-client.git
+```
+
+### 2️⃣ Go to the project directory
+
+```bash
+cd bookoro-client
+```
+
+### 3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 4️⃣ Create Environment Variables
+
+Create a `.env` file in the root directory and add:
+
+```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_API_URL=your_server_url
+```
+
+### 5️⃣ Start the development server
+
+```bash
+npm run dev
+```
+
+The project will run on:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🔗 Important Links
+
+🌍 **Live Website:**  
+https://bookoro-app.web.app
+
+💻 **Client Repository:**  
+https://github.com/MasadRayan/Bookoro-Client
+
+🖥️ **Server Repository:**  
+https://github.com/MasadRayan/Bookoro-Server
+
+---
+
+# 🔒 Security Features
+
+✅ Firebase configuration secured using environment variables.  
+✅ MongoDB credentials secured using environment variables.  
+✅ JWT authentication implemented for private routes.  
+✅ Protected API routes with authentication verification.
+
+---
+
+# 🎨 UI/UX Highlights
+
+✨ Fully responsive for mobile, tablet, and desktop.  
+✨ Modern hotel booking interface.  
+✨ Smooth animations using Framer Motion and AOS.  
+✨ Clean spacing, alignment, and recruiter-friendly design.  
+✨ Interactive components for better user experience.
+
+---
+
+## 👨‍💻 Developer
+
+**Masad Rayan**
+
+Built React, Node.js, Express & MongoDB.
